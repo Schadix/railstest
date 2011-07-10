@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+
+<h2>Weights</h2>
+<% @person.weights.each do |weight| %>
+	<br/>
+		<b>Weight:</b>
+		<%= weight.weight %>
+		<b>Date:</b>
+		<%= weight.date%>
+<% end %>
+
+<h2>Add a weight:</h2>
+<%= form_for([@person, @person.weights.build]) do |p| %>
+<div class="field">
+	<%= p.label :weight %><br />
+	<%= p.text_field :weight %>
+</div>
+<div class="field">
+	<%= p.label :date %><br />
+	<%= p.text_field :date %>
+</div>
+<div class="actions">
+	<%= p.submit %>
+</div>
+<% end %>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

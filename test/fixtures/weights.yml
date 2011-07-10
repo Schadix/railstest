@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  weight: 1.5
+  date: 2011-07-09
+  person: 
+
+two:
+  weight: 1.5
+  date: 2011-07-09
+  person: 
