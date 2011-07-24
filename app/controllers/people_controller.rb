@@ -13,13 +13,14 @@ class PeopleController < ApplicationController
 
   # GET /people/1
   # GET /people/1.xml
+  # GET /people/1.json
   def show
     @person = Person.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
-      format.json { render :json => @person}
+      format.json { render :json => @person.to_json(:include => :weights)}
     end
   end
 
