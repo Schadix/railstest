@@ -16,7 +16,6 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
@@ -45,14 +44,15 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
-
     respond_to do |format|
       if @person.save
         format.html { redirect_to(@person, :notice => 'Person was successfully created.') }
         format.xml  { render :xml => @person, :status => :created, :location => @person }
+        format.json  { render :json => @person, :status => :created, :location => @person }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @person.errors, :status => :unprocessable_entity }
       end
     end
   end
