@@ -14,4 +14,14 @@ class WeightsController < ApplicationController
       format.json { render :json => @weight }
     end
   end
+  
+  def destroy
+    @person = Person.find(params[:person_id])
+    @weight = @person.weights.find(params[:id])
+    @weight.destroy();
+    respond_to do |format|
+      format.json { render :json => @person.weights }
+    end
+  end
+  
 end
